@@ -1,6 +1,13 @@
 import { createServer } from "node:http";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import {
+  loginCredential,
+  loginDevelopmentSocial,
+  registerCredential,
+  saveProgress,
+  userForToken
+} from "./auth-store.mjs";
 
 const catalog = JSON.parse(
   readFileSync(resolve(import.meta.dirname, "../../packages/content/src/catalog.json"), "utf8")
@@ -43,6 +50,11 @@ function sendJson(response, status, body) {
   response.end(JSON.stringify(body));
 }
 
+function bearerToken(request) {
+  const value = request.headers.authorization ?? "";
+  return value.startsWith("Bearer ") ? value.slice(7) : "";
+}
+
 async function readBody(request) {
   let raw = "";
   for await (const chunk of request) raw += chunk;
@@ -67,6 +79,33 @@ export function createApiServer() {
     }
     if (request.method === "GET" && url.pathname === "/api/courses") {
       return sendJson(response, 200, catalog);
+    }
+    if (request.method === "POST" && url.pathname === "/api/auth/register") {
+      const body = await readBody(request);
+      const result = body ? registerCredential(body) : { error: "invalid_json" };
+      return sendJson(response, result.error ? 400 : 201, result);
+    }
+    if (request.method === "POST" && url.pathname === "/api/auth/login") {
+      const body = await readBody(request);
+      const result = body ? loginCredential(body) : { error: "invalid_json" };
+      return sendJson(response, result.error ? 401 : 200, result);
+    }
+    if (request.method === "POST" && url.pathname.startsWith("/api/auth/social/")) {
+      const provider = url.pathname.split("/").pop();
+      const body = await readBody(request);
+      const result = body ? loginDevelopmentSocial({ ...body, provider }) : { error: "invalid_json" };
+      return sendJson(response, result.error ? 400 : 200, result);
+    }
+    if (request.method === "GET" && url.pathname === "/api/auth/me") {
+      const user = userForToken(bearerToken(request));
+      return user ? sendJson(response, 200, { user }) : sendJson(response, 401, { error: "unauthorized" });
+    }
+    if (request.method === "PUT" && url.pathname === "/api/progress") {
+      const user = userForToken(bearerToken(request));
+      if (!user) return sendJson(response, 401, { error: "unauthorized" });
+      const body = await readBody(request);
+      const result = body ? saveProgress(user.id, body.lessonId, body.status, body.completedPercent) : { error: "invalid_json" };
+      return sendJson(response, result.error ? 400 : 200, result);
     }
     if (request.method === "GET" && url.pathname.startsWith("/api/courses/")) {
       const course = catalog.courses.find((item) => item.id === url.pathname.split("/").pop());

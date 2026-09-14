@@ -9,7 +9,7 @@
   <body>
     <header class="topbar">
       <a class="brand" href="/">Total<span>AI</span></a>
-      <nav><a href="#ruta">Mi ruta</a><a href="#proyecto">Proyecto</a><button>Entrar</button></nav>
+      <nav><a href="#ruta">Mi ruta</a><a href="#proyecto">Proyecto</a><a href="#cuenta">Cuenta</a></nav>
     </header>
     <main>
       <section class="hero">
@@ -26,6 +26,31 @@
       <section id="proyecto" class="project panel">
         <div><p class="eyebrow">PROYECTO CENTRAL</p><h2>Aprender haciendo.</h2><p>Define una idea, descubre el conocimiento necesario y demuestra el resultado con evidencias.</p></div>
         <div class="project-card"><span>EN PREPARACIÓN</span><strong>Tu primer sistema</strong><small>Diseña · implementa · comprueba</small></div>
+      </section>
+      <section id="cuenta" class="panel account">
+        <div>
+          <p class="eyebrow">CUENTA Y PROGRESO</p>
+          <h2>Guarda tu recorrido.</h2>
+          <p>Elige un método independiente. Puedes usar correo, teléfono o un proveedor social; no necesitas combinarlos.</p>
+          <p id="auth-status" class="auth-status">Sin sesión iniciada.</p>
+        </div>
+        <form id="auth-form" class="auth-form">
+          <label>Método
+            <select id="auth-provider">
+              <option value="email">Correo electrónico</option>
+              <option value="phone">Teléfono</option>
+            </select>
+          </label>
+          <label id="subject-label">Correo
+            <input id="auth-subject" required placeholder="tu@correo.com" autocomplete="username" />
+          </label>
+          <label>Contraseña
+            <input id="auth-password" required type="password" minlength="8" placeholder="Mínimo 8 caracteres" autocomplete="current-password" />
+          </label>
+          <div class="form-actions"><button class="primary" type="submit" data-auth-action="login">Iniciar sesión</button><button class="secondary" type="submit" data-auth-action="register">Crear cuenta</button></div>
+          <div class="social-actions"><button type="button" data-social="google">Continuar con Google (demo)</button><button type="button" data-social="github">Continuar con GitHub (demo)</button></div>
+          <small class="form-note">Los botones sociales están en modo demo hasta configurar OAuth con variables de entorno.</small>
+        </form>
       </section>
     </main>
     <footer>Construido para comprender antes de automatizar.</footer>
