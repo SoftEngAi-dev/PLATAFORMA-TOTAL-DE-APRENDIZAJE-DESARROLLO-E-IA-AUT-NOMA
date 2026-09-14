@@ -1,0 +1,40 @@
+name: Protect project charter
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  protect-readme:
+    name: Preserve README.md
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require the project charter
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -s README.md
+          test -f docs/master/CONCEPTO-MAESTRO.md
+          test -s docs/master/CONCEPTO-MAESTRO.md
+
+      - name: Prevent deletion or replacement
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "${{ github.event.pull_request.base.ref }}"
+          git diff --exit-code "origin/${{ github.event.pull_request.base.ref }}:README.md" "README.md"
+          git diff --exit-code \
+            "origin/${{ github.event.pull_request.base.ref }}:docs/master/CONCEPTO-MAESTRO.md" \
+            "docs/master/CONCEPTO-MAESTRO.md"
