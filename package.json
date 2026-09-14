@@ -1,0 +1,24 @@
+{
+  "name": "plataforma-total-de-aprendizaje",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Plataforma multiplataforma de aprendizaje tecnológico online, offline e híbrido.",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "check": "npm run typecheck",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/unit/*.test.mjs",
+    "lint": "echo \"Lint pendiente de configuración\"",
+    "dev": "python -m http.server 4173 --directory apps/web"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
