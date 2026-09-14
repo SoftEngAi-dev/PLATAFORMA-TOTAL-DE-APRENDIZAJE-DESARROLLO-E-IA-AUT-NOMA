@@ -1,0 +1,136 @@
+{
+  "version": "0.1.0",
+  "language": "es",
+  "updatedAt": "2026-09-14",
+  "courses": [
+    {
+      "id": "python-desde-cero",
+      "title": "Python desde cero: piensa y construye",
+      "summary": "Aprende lógica y Python creando pequeños programas explicables.",
+      "level": "explorer",
+      "estimatedMinutes": 360,
+      "prerequisites": [],
+      "learningMethod": ["explanation", "practice", "project"],
+      "modules": [
+        {
+          "id": "python-01-thinking",
+          "title": "Pensamiento computacional",
+          "objective": "Convertir un problema cotidiano en pasos verificables.",
+          "lessons": [
+            {
+              "id": "python-01-01",
+              "title": "Entrada, transformación y salida",
+              "type": "interactive",
+              "minutes": 25,
+              "knowledge": [
+                "Todo programa recibe datos, aplica reglas y produce un resultado.",
+                "Un ejemplo pequeño permite comprobar la idea antes de generalizar."
+              ],
+              "exercise": "Describe el algoritmo para preparar una bebida en cinco pasos.",
+              "successCriteria": ["Incluye una entrada", "Ordena pasos", "Define una salida"]
+            }
+          ]
+        },
+        {
+          "id": "python-02-basics",
+          "title": "Variables, decisiones y ciclos",
+          "objective": "Escribir programas pequeños y explicar cada decisión.",
+          "lessons": [
+            {
+              "id": "python-02-01",
+              "title": "Variables como nombres de datos",
+              "type": "code",
+              "minutes": 35,
+              "knowledge": [
+                "Una variable asocia un nombre con un valor.",
+                "Los nombres claros hacen que el código sea una explicación."
+              ],
+              "exercise": "Crea un programa que calcule el total de tres productos.",
+              "successCriteria": ["Usa nombres claros", "Calcula correctamente", "Prueba un caso"]
+            }
+          ]
+        },
+        {
+          "id": "python-03-project",
+          "title": "Proyecto: explorador de hábitos",
+          "objective": "Construir una aplicación de consola que registre hábitos.",
+          "lessons": [
+            {
+              "id": "python-03-01",
+              "title": "Proyecto guiado y evidencia",
+              "type": "project",
+              "minutes": 90,
+              "knowledge": [
+                "Un proyecto demuestra habilidades mediante decisiones y resultados.",
+                "La evidencia incluye objetivo, código, pruebas y reflexión."
+              ],
+              "exercise": "Registra hábitos, calcula una racha y explica una mejora futura.",
+              "successCriteria": ["Funciona", "Tiene pruebas", "Explica decisiones"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "web-full-stack",
+      "title": "Full Stack: de la interfaz a la API",
+      "summary": "Conecta una interfaz web con una API y un modelo de datos.",
+      "level": "intermediate",
+      "estimatedMinutes": 480,
+      "prerequisites": ["python-desde-cero"],
+      "learningMethod": ["project", "debugging", "assessment"],
+      "modules": [
+        {
+          "id": "web-01-contracts",
+          "title": "Contratos HTTP y JSON",
+          "objective": "Diseñar endpoints previsibles y validar entradas.",
+          "lessons": [
+            {
+              "id": "web-01-01",
+              "title": "Una petición como conversación",
+              "type": "interactive",
+              "minutes": 40,
+              "knowledge": [
+                "El cliente pide un recurso y el servidor responde con estado y datos.",
+                "Los errores explícitos permiten corregir el problema sin adivinar."
+              ],
+              "exercise": "Diseña GET /courses y POST /progress con ejemplos JSON.",
+              "successCriteria": ["Define entradas", "Define respuestas", "Incluye error"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ia-responsable",
+      "title": "IA aplicada: tutor, herramientas y evaluación",
+      "summary": "Diseña asistentes que expliquen, usen herramientas y puedan evaluarse.",
+      "level": "advanced",
+      "estimatedMinutes": 540,
+      "prerequisites": ["web-full-stack"],
+      "learningMethod": ["explanation", "experiment", "human-review"],
+      "modules": [
+        {
+          "id": "ai-01-tutor",
+          "title": "Tutor que enseña el porqué",
+          "objective": "Crear respuestas guiadas que no oculten el conocimiento.",
+          "lessons": [
+            {
+              "id": "ai-01-01",
+              "title": "Respuesta, evidencia y siguiente paso",
+              "type": "case-study",
+              "minutes": 45,
+              "knowledge": [
+                "Una respuesta educativa explica el razonamiento y propone práctica.",
+                "La autonomía debe avanzar solo después de una prueba y una métrica."
+              ],
+              "exercise": "Evalúa una respuesta de IA y señala qué evidencia le falta.",
+              "successCriteria": ["Detecta afirmaciones", "Pide evidencia", "Propone prueba"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

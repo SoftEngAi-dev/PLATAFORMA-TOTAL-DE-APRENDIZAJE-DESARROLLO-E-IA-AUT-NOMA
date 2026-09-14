@@ -1,31 +1,23 @@
 import { createServer } from "node:http";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-const curriculum = [
-  {
-    id: "computational-thinking",
-    level: "explorer",
-    title: "Pensamiento computacional",
-    description: "Divide problemas reales en pasos, datos y decisiones.",
-    estimatedMinutes: 45,
-    outcomes: ["Descomponer un problema", "Escribir un algoritmo"]
-  },
-  {
-    id: "python-foundations",
-    level: "beginner",
-    title: "Fundamentos de Python",
-    description: "Variables, condiciones, ciclos, funciones y errores.",
-    estimatedMinutes: 120,
-    outcomes: ["Crear scripts", "Depurar errores básicos"]
-  },
-  {
-    id: "apis-and-data",
-    level: "intermediate",
-    title: "APIs y datos",
-    description: "Conecta servicios y persiste información con contratos claros.",
-    estimatedMinutes: 180,
-    outcomes: ["Consumir una API", "Modelar datos"]
-  }
-];
+const catalog = JSON.parse(
+  readFileSync(resolve(import.meta.dirname, "../../packages/content/src/catalog.json"), "utf8")
+);
+const curriculum = catalog.courses.flatMap((course) =>
+  course.modules.flatMap((module) =>
+    module.lessons.map((lesson) => ({
+      id: lesson.id,
+      courseId: course.id,
+      level: course.level,
+      title: lesson.title,
+      description: module.objective,
+      estimatedMinutes: lesson.minutes,
+      outcomes: lesson.successCriteria
+    }))
+  )
+);
 
 const profiles = new Map([
   [
@@ -72,6 +64,15 @@ export function createApiServer() {
     }
     if (request.method === "GET" && url.pathname === "/api/curriculum") {
       return sendJson(response, 200, { items: curriculum });
+    }
+    if (request.method === "GET" && url.pathname === "/api/courses") {
+      return sendJson(response, 200, catalog);
+    }
+    if (request.method === "GET" && url.pathname.startsWith("/api/courses/")) {
+      const course = catalog.courses.find((item) => item.id === url.pathname.split("/").pop());
+      return course
+        ? sendJson(response, 200, course)
+        : sendJson(response, 404, { error: "course_not_found" });
     }
     if (url.pathname.startsWith("/api/profiles/")) {
       const id = url.pathname.split("/").pop();

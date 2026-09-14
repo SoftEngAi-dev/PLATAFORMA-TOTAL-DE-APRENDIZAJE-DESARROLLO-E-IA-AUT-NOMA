@@ -7,6 +7,8 @@ export interface ApiRoute {
 export const apiRoutes: ApiRoute[] = [
   { method: "GET", path: "/health", description: "Estado del servicio" },
   { method: "GET", path: "/api/curriculum", description: "Ruta inicial de aprendizaje" },
+  { method: "GET", path: "/api/courses", description: "Catálogo de cursos y lecciones" },
+  { method: "GET", path: "/api/courses/:id", description: "Detalle de un curso" },
   { method: "GET", path: "/api/profiles/:id", description: "Perfil y progreso" },
   { method: "PUT", path: "/api/profiles/:id", description: "Actualizar perfil" },
   { method: "POST", path: "/api/tutor", description: "Explicación guiada" }

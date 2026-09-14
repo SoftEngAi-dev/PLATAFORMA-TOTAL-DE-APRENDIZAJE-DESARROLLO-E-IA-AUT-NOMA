@@ -14,7 +14,11 @@ test("API exposes health and curriculum endpoints", async (t) => {
 
   const curriculum = await fetch(`http://127.0.0.1:${port}/api/curriculum`);
   assert.equal(curriculum.status, 200);
-  assert.equal((await curriculum.json()).items.length, 3);
+  assert.equal((await curriculum.json()).items.length, 5);
+
+  const courses = await fetch(`http://127.0.0.1:${port}/api/courses`);
+  assert.equal(courses.status, 200);
+  assert.equal((await courses.json()).courses.length, 3);
 });
 
 test("API tutor rejects empty questions and answers valid questions", async (t) => {
