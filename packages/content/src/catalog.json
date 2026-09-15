@@ -1,7 +1,7 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "language": "es",
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-09-15",
   "courses": [
     {
       "id": "python-desde-cero",
@@ -22,10 +22,7 @@
               "title": "Entrada, transformación y salida",
               "type": "interactive",
               "minutes": 25,
-              "knowledge": [
-                "Todo programa recibe datos, aplica reglas y produce un resultado.",
-                "Un ejemplo pequeño permite comprobar la idea antes de generalizar."
-              ],
+              "knowledge": ["Todo programa recibe datos, aplica reglas y produce un resultado.", "Un ejemplo pequeño permite comprobar la idea antes de generalizar."],
               "exercise": "Describe el algoritmo para preparar una bebida en cinco pasos.",
               "successCriteria": ["Incluye una entrada", "Ordena pasos", "Define una salida"]
             }
@@ -41,10 +38,7 @@
               "title": "Variables como nombres de datos",
               "type": "code",
               "minutes": 35,
-              "knowledge": [
-                "Una variable asocia un nombre con un valor.",
-                "Los nombres claros hacen que el código sea una explicación."
-              ],
+              "knowledge": ["Una variable asocia un nombre con un valor.", "Los nombres claros hacen que el código sea una explicación."],
               "exercise": "Crea un programa que calcule el total de tres productos.",
               "successCriteria": ["Usa nombres claros", "Calcula correctamente", "Prueba un caso"]
             }
@@ -60,10 +54,7 @@
               "title": "Proyecto guiado y evidencia",
               "type": "project",
               "minutes": 90,
-              "knowledge": [
-                "Un proyecto demuestra habilidades mediante decisiones y resultados.",
-                "La evidencia incluye objetivo, código, pruebas y reflexión."
-              ],
+              "knowledge": ["Un proyecto demuestra habilidades mediante decisiones y resultados.", "La evidencia incluye objetivo, código, pruebas y reflexión."],
               "exercise": "Registra hábitos, calcula una racha y explica una mejora futura.",
               "successCriteria": ["Funciona", "Tiene pruebas", "Explica decisiones"]
             }
@@ -90,10 +81,7 @@
               "title": "Una petición como conversación",
               "type": "interactive",
               "minutes": 40,
-              "knowledge": [
-                "El cliente pide un recurso y el servidor responde con estado y datos.",
-                "Los errores explícitos permiten corregir el problema sin adivinar."
-              ],
+              "knowledge": ["El cliente pide un recurso y el servidor responde con estado y datos.", "Los errores explícitos permiten corregir el problema sin adivinar."],
               "exercise": "Diseña GET /courses y POST /progress con ejemplos JSON.",
               "successCriteria": ["Define entradas", "Define respuestas", "Incluye error"]
             }
@@ -120,12 +108,68 @@
               "title": "Respuesta, evidencia y siguiente paso",
               "type": "case-study",
               "minutes": 45,
-              "knowledge": [
-                "Una respuesta educativa explica el razonamiento y propone práctica.",
-                "La autonomía debe avanzar solo después de una prueba y una métrica."
-              ],
+              "knowledge": ["Una respuesta educativa explica el razonamiento y propone práctica.", "La autonomía debe avanzar solo después de una prueba y una métrica."],
               "exercise": "Evalúa una respuesta de IA y señala qué evidencia le falta.",
               "successCriteria": ["Detecta afirmaciones", "Pide evidencia", "Propone prueba"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aprender-y-vivir-con-criterio",
+      "title": "Aprender rápido, pensar claro y actuar con criterio",
+      "summary": "Metacognición, atención, WOOP, estoicismo y lentes filosóficas para construir proyectos.",
+      "level": "explorer",
+      "estimatedMinutes": 240,
+      "prerequisites": [],
+      "learningMethod": ["retrieval", "spaced-practice", "reflection", "project"],
+      "modules": [
+        {
+          "id": "mind-01-learning",
+          "title": "Aprender sin engañarse",
+          "objective": "Distinguir familiaridad de dominio mediante recuperación y evidencia.",
+          "lessons": [
+            {
+              "id": "mind-01-01",
+              "title": "Recupera, aplica y comprueba",
+              "type": "practice",
+              "minutes": 35,
+              "knowledge": ["Reconocer una explicación no demuestra poder usarla.", "La recuperación activa y la práctica espaciada hacen visible lo que falta."],
+              "exercise": "Explica una idea sin mirar apuntes y crea un ejemplo mínimo.",
+              "successCriteria": ["Explica con sus palabras", "Construye un ejemplo", "Detecta una duda"]
+            }
+          ]
+        },
+        {
+          "id": "mind-02-woop",
+          "title": "Manifestación convertida en plan",
+          "objective": "Transformar una intención en una conducta con obstáculo y respuesta.",
+          "lessons": [
+            {
+              "id": "mind-02-01",
+              "title": "Deseo, resultado, obstáculo y plan",
+              "type": "reflection",
+              "minutes": 30,
+              "knowledge": ["Visualizar un resultado no sustituye la acción ni garantiza el resultado.", "Un plan si-entonces conecta un obstáculo previsible con una respuesta concreta."],
+              "exercise": "Escribe un WOOP para terminar una lección técnica y añade una evidencia.",
+              "successCriteria": ["Define deseo", "Nombra obstáculo", "Escribe plan si-entonces", "Define evidencia"]
+            }
+          ]
+        },
+        {
+          "id": "mind-03-philosophy",
+          "title": "Filosofía práctica para proyectos",
+          "objective": "Usar estoicismo y otras lentes sin convertirlas en dogmas.",
+          "lessons": [
+            {
+              "id": "mind-03-01",
+              "title": "Control, evidencia y responsabilidad",
+              "type": "case-study",
+              "minutes": 40,
+              "knowledge": ["El estoicismo distingue lo que depende de nuestra acción de lo que no.", "Empirismo, racionalismo, pragmatismo, humanismo y constructivismo hacen preguntas distintas."],
+              "exercise": "Analiza un fallo de API con tres lentes y propone una acción verificable.",
+              "successCriteria": ["Distingue control", "Pide evidencia", "Considera a las personas", "Propone prueba"]
             }
           ]
         }
@@ -133,4 +177,3 @@
     }
   ]
 }
-
