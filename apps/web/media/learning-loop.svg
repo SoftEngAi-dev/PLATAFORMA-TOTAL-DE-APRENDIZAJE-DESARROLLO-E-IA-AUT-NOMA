@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Ciclo aprende, practica y comprueba</title>
+  <desc id="desc">Animación educativa original que conecta tres etapas del aprendizaje.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#10233a"/><stop offset="1" stop-color="#18345b"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="720" height="420" rx="24" fill="url(#bg)"/>
+  <path d="M178 210 C178 96 285 54 360 54 C474 54 542 120 542 210 C542 324 432 366 360 366 C246 366 178 300 178 210Z" fill="none" stroke="#345172" stroke-width="3" stroke-dasharray="9 12"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <g transform="translate(360 78)"><circle r="32" fill="#62e6b4" filter="url(#glow)"/><text y="5" font-size="24" fill="#07141d">1</text><text y="58" font-size="18" fill="#e9f0ff">Aprende</text></g>
+    <g transform="translate(502 286)"><circle r="32" fill="#f2c76a" filter="url(#glow)"/><text y="5" font-size="24" fill="#07141d">2</text><text y="58" font-size="18" fill="#e9f0ff">Practica</text></g>
+    <g transform="translate(218 286)"><circle r="32" fill="#7fb4ff" filter="url(#glow)"/><text y="5" font-size="24" fill="#07141d">3</text><text y="58" font-size="18" fill="#e9f0ff">Comprueba</text></g>
+    <text x="360" y="210" font-size="22" font-weight="700" fill="#e9f0ff">CONSTRUYE</text>
+    <text x="360" y="240" font-size="14" fill="#a9bad2">cada proyecto deja evidencia</text>
+  </g>
+  <circle r="6" fill="#fff"><animateMotion dur="5s" repeatCount="indefinite" path="M178 210 C178 96 285 54 360 54 C474 54 542 120 542 210 C542 324 432 366 360 366 C246 366 178 300 178 210Z"/></circle>
+</svg>
