@@ -1,0 +1,56 @@
+{
+  "name": "@plataforma/desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Plataforma de aprendizaje - Aplicación de escritorio",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "vite & electron .",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.1.0"
+  },
+  "build": {
+    "appId": "com.plataforma.desktop",
+    "productName": "Plataforma Total de Aprendizaje",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
