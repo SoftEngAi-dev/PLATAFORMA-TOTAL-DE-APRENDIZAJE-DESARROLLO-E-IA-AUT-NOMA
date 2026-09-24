@@ -1,0 +1,2 @@
+export const SANDBOX_POLICY=Object.freeze({network:'none',rootFilesystem:'read-only',memory:'1g',cpus:'1',pidsLimit:128,timeoutMs:60000,workspaceReadOnly:true});
+export const safeRelativePath=value=>{const normalized=String(value).replaceAll('\\\\','/').trim();if(!normalized||normalized.startsWith('/')||normalized.includes('\0'))throw new Error('Ruta no válida.');if(normalized.split('/').some(x=>x==='..'))throw new Error('Traversal de rutas bloqueado.');return normalized;};
