@@ -3,12 +3,27 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs/promises';
 import os from 'node:os';
+import { spawn, type ChildProcess } from 'node:child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const isDev = !app.isPackaged;
 const gateway = process.env.AI_ORCHESTRATOR_URL || 'http://127.0.0.1:8790';
 const workspaceRoot = path.resolve(process.env.PLATAFORMA_WORKSPACE || path.join(os.homedir(), 'PlataformaWorkspace'));
+const children: ChildProcess[] = [];
+
+function startLocalServices(): void {
+  if (!app.isPackaged) return;
+  const env = { ...process.env, ELECTRON_RUN_AS_NODE: '1' };
+  const gatewayPath = path.join(process.resourcesPath, 'gateway', 'main.mjs');
+  const sandboxPath = path.join(process.resourcesPath, 'sandbox', 'main.mjs');
+  for (const [script, port] of [[gatewayPath, '8790'], [sandboxPath, '8791']] as const) {
+    const child = spawn(process.execPath, [script], { env: { ...env, ...(script === gatewayPath ? { AI_ORCHESTRATOR_PORT: port } : { SANDBOX_PORT: port }) }, stdio: 'ignore', windowsHide: true });
+    children.push(child);
+  }
+}
+
+function stopLocalServices(): void { for (const child of children) child.kill(); }
 
 function safeName(name: string): string {
   const value = name.trim();
@@ -72,7 +87,9 @@ ipcMain.handle('workspace:create', async (_event: unknown, name: string) => {
 });
 
 app.whenReady().then(() => {
+  startLocalServices();
   createWindow();
   app.on('activate', () => { if (!BrowserWindow.getAllWindows().length) createWindow(); });
 });
+app.on('before-quit', () => stopLocalServices());
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
