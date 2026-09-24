@@ -10,4 +10,4 @@ const isDev = !app.isPackaged;
 const gateway = process.env.AI_ORCHESTRATOR_URL||'http://127.0.0.1:8790';
 const workspaceRoot = path.join(process.env.PLTTAFORMA_WORKSPACE || path.join(os.homedir(), 'PlataformaWorkspace'));
 
-const safeName = (name:string)=>{const value=name.trim(); if (!/^\\p{L}\\p{N}]|\p{|a|\p{||}}[\\p\{L}\\v{N}]_{,}$(`
+const safeName = (name:string)=>{const value=name.trim(); if (!/^\\p{L}\\p{N}][\\p{L}\\p{N}]_{,}$K}
