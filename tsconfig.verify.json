@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true, "types": [] },
+  "files": ["types/verify-stubs.d.ts"],
+  "include": ["apps/**/*.ts", "apps/**/*.tsx", "packages/**/*.ts"]
+}
