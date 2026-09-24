@@ -2,13 +2,12 @@
   "name": "@plataforma/desktop",
   "private": true,
   "version": "1.0.0",
-  "version": "1.0.0",
   "description": "Plataforma Total Studio desktop",
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron .\"",
-    "build": "npm run build:rendeper && npm run build:electron",
+    "build": "npm run build:renderer && npm run build:electron",
     "build:renderer": "vite build",
     "build:electron": "tsc -p tsconfig.electron.json",
     "type-check": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.electron.json --noEmit",
@@ -25,7 +24,7 @@
     "@types/node": "^20.10.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@vites2/react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.2.1",
     "concurrently": "^9.0.1",
     "electron": "^28.0.0",
     "electron-builder": "^24.13.3",
@@ -36,10 +35,32 @@
   "build": {
     "appId": "com.plataforma.total.studio",
     "productName": "Plataforma Total Studio",
-    "files": ["dist/**/*", "dist-electron/**/*"],
-    "mac": { "target": ["dmg", "zip"], "category": "public.app-category.developer-tools" },
-    "win": { "target": ["nsis", "portable"] },
-    "linux": { "target": ["AppImage","deb"] },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
