@@ -1,0 +1,2 @@
+export function safeRelativePath(value){const normalized=String(value).replaceAll('\\\\','/').trim();if(!normalized||normalized.startsWith('/')||normalized.includes('\0'))throw new Error('Ruta no válida.');if(normalized.split('/').some(x=>x==='..'))throw new Error('Traversal de rutas bloqueado.');return normalized;}
+export function sanitizeName(value){const normalized=String(value).trim();if(!/^[\p{L}\p{N}][\p{L}\p{N} _.-]{1,70}$/u.test(normalized))throw new Error('Nombre de proyecto no válido.');return normalized;}
