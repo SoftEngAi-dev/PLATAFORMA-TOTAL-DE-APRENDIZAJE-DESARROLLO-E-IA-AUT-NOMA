@@ -61,6 +61,16 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
-    }
+    },
+    "extraResources": [
+      {
+        "from": "../../services/ai-orchestrator/src",
+        "to": "gateway"
+      },
+      {
+        "from": "../../services/sandbox/src",
+        "to": "sandbox"
+      }
+    ]
   }
 }
