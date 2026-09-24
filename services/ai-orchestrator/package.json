@@ -1,13 +1,8 @@
 {
   "name": "@plataforma/ai-orchestrator",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "start": "node --experimental-strip-types src/main.ts",
-    "dev": "node --watch --experimental-strip-types src/main.ts"
-  },
-  "engines": {
-    "node": ">=20"
-  }
+  "scripts": { "start": "node src/main.mjs", "dev": "node --watch src/main.mjs" },
+  "engines": { "node": ">=20" }
 }
