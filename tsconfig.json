@@ -8,9 +8,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "allowJs": false,
-    "allowImportingTsExtensions": true,
     "baseUrl": ".",
-    "paths": { "@plataforma/shared/*": ["packages/shared/*"] }
+    "paths": {
+      "@plataforma/shared/*": [
+        "packages/shared/*"
+      ]
+    }
   },
-  "include": ["apps/**/*.ts", "apps/**/*.tsx", "services/**/*.ts", "packages/**/*.ts"]
+  "include": [
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
+    "packages/**/*.ts"
+  ]
 }
